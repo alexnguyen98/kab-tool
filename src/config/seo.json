@@ -1,0 +1,26 @@
+{
+    "title": "KAB - Tool",
+    "description": "Cryptography tool on browser",
+    "openGraph": {
+      "title": "KAB - Tool",
+      "description": "Cryptography tool on browser",
+      "type": "website",
+      "locale": "en_IE",
+      "url": "https://kabtool.vercel.app/",
+      "site_name": "KAB - Tool",
+      "images": [
+        {
+          "url": "/icon-512x512.png",
+          "width": 800,
+          "height": 600,
+          "alt": "Marimos"
+        }
+      ]
+    },
+    "twitter": {
+      "handle": "@kabtool",
+      "site": "https://kabtool.vercel.app/",
+      "cardType": "summary_large_image"
+    }
+  }
+  
