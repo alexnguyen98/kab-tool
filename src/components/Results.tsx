@@ -4,7 +4,7 @@ import TextArea from './common/TextArea';
 import { useGlobalContext } from './context/ManagedContext';
 
 const Results: React.FC = () => {
-  const { setInput } = useGlobalContext();
+  const { input, setInput } = useGlobalContext();
 
   const handleChange = (e: any) => {
     setInput(e.target.value);
@@ -22,7 +22,7 @@ const Results: React.FC = () => {
         <Text variant="small" className="p-3">
           Input
         </Text>
-        <TextArea className="flex-1 px-3 focus:outline-none" onChange={handleChange} />
+        <TextArea className="flex-1 px-3 focus:outline-none" value={input} onChange={handleChange} />
       </div>
     </div>
   );

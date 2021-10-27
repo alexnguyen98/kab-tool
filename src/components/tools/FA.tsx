@@ -37,8 +37,6 @@ const FA: React.FC = () => {
       freq[i] = freq[i] / input.trim().length;
     });
 
-    console.log(freq);
-
     return freq;
   };
 
