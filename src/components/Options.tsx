@@ -10,6 +10,7 @@ const Options: React.FC = () => {
   const handleType = (i: CIPTHER_TYPES) => setActiveType(i);
 
   const handleHelp = (i: CIPTHER_TYPES) => {
+    console.log(i);
     alert('help');
   };
 
