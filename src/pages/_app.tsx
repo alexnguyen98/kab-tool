@@ -5,6 +5,7 @@ import { handlePageView } from '../utils/ga';
 import SeoHead from '../components/seo/SeoHead';
 import '../assets/styles/main.css';
 import '../assets/styles/chrome-bug.css';
+import { ManagedContext } from '../components/context/ManagedContext';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
@@ -23,7 +24,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <SeoHead />
-      <Component {...pageProps} />
+      <ManagedContext>
+        <Component {...pageProps} />
+      </ManagedContext>
     </>
   );
 };

@@ -6,10 +6,7 @@ module.exports = {
     applyComplexClasses: true,
   },
   purge: {
-    content: [
-      './src/pages/**/*.{js,ts,jsx,tsx}',
-      './src/components/**/*.{js,ts,jsx,tsx}',
-    ],
+    content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
     options: {
       safelist: {
         standard: ['outline-none'],
@@ -54,10 +51,7 @@ module.exports = {
         'accent-7': 'var(--accent-7)',
         'accent-8': 'var(--accent-8)',
         'accent-9': 'var(--accent-9)',
-        amber: colors.amber,
-        red: colors.red,
-        'green-1': 'var(--green-1)',
-        'green-2': 'var(--green-2)',
+        blue: colors.blue,
       },
       textColor: {
         base: 'var(--text-base)',

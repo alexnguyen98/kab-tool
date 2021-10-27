@@ -1,23 +1,26 @@
 import React from 'react';
+import Logo from '../icons/Logo';
+import Github from '../icons/Github';
 
-const Navbar: React.FC = () => (
-  <header className="fixed w-full top-0 z-20 flex bg-amber-200 bg-opacity-50 frosted-bg">
-    <nav className="mx-auto flex items-center px-5 py-4 md:py-6 md:px-10 max-w-7xl w-full text-lg">
-      <div className="flex-1">
-        <a href="#">
-          <img src="/logo.png" alt="logo" className="w-40 md:w-50" />
-        </a>
-      </div>
-      <div className="flex-1 flex justify-end">
-        <a
-          href="#early-access"
-          className="text-sm font-bold rounded-full py-2 px-5 bg-amber-300 transition ease-in-out duration-300 hover:bg-amber-400"
-        >
-          Get the Drop
-        </a>
-      </div>
-    </nav>
-  </header>
-);
+const Navbar: React.FC = () => {
+  return (
+    <header>
+      <nav className="px-5 py-3 flex items-center">
+        <div className="flex items-center text-blue-700">
+          <Logo className="w-8 mr-1" />
+          KAB tool
+        </div>
+        <ul className="ml-auto text-sm text-accent-3 flex items-center space-x-5">
+          <li>
+            <a href="https://github.com/alexnguyen98/kab-tool" className="flex items-center">
+              <Github className="w-4 mr-1 fill-current" />
+              Github
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
 export default Navbar;
