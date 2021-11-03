@@ -11,9 +11,9 @@ const Shift: React.FC = () => {
     setShift(e.target.value);
     let res = input;
     abcdArr.forEach((i, index) => {
-      res = res.replaceAll(i, abcdArr[(index + parseInt(e.target.value)) % LETTER_LENGTH].toUpperCase());
+      res = res.replaceAll(i, abcdArr[(index + parseInt(e.target.value)) % LETTER_LENGTH]?.toUpperCase());
     });
-    setOutput(res?.toLowerCase());
+    setOutput(res);
   };
 
   return (

@@ -3,14 +3,14 @@ import { useDebounce } from '../hooks/useDebounce';
 import { useGlobalContext } from '../context/ManagedContext';
 
 const AutoSave: React.FC = () => {
-  const { input, setInput } = useGlobalContext();
-  const debouncedInput = useDebounce(input, 1000);
+  const { setData, input, faShift, shift, affine } = useGlobalContext();
+  const debouncedInput = useDebounce(JSON.stringify({ input, faShift, shift, affine }), 1000);
 
   useEffect(() => {
     const loadData = () => {
       const data = localStorage.getItem('saved_data');
       if (data) {
-        setInput(JSON.parse(data));
+        setData(JSON.parse(data));
       }
     };
     loadData();
@@ -18,7 +18,12 @@ const AutoSave: React.FC = () => {
 
   useEffect(() => {
     if (!input.trim().length) return;
-    const data = JSON.stringify(input);
+    const data = JSON.stringify({
+      input,
+      faShift,
+      shift,
+      affine,
+    });
     localStorage.setItem('saved_data', data);
   }, [debouncedInput]);
 

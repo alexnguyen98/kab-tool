@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import React, { useState } from 'react';
 import { cipherArr, CIPTHER_TYPES } from '../constants/ciphers';
-import Affine from './tools/Affine';
+import Afinne from './tools/Afinne';
 import FA from './tools/FA';
 import Shift from './tools/Shift';
 
@@ -22,7 +22,7 @@ const Options: React.FC = () => {
       case CIPTHER_TYPES.SHIFT:
         return <Shift />;
       case CIPTHER_TYPES.AFFINE:
-        return <Affine />;
+        return <Afinne />;
       default:
         return null;
     }

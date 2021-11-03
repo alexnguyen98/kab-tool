@@ -1,12 +1,14 @@
 import React, { useReducer, useMemo, useCallback, useContext, createContext } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { LETTER_LENGTH } from '../constants/vocabulary';
+import { AffineType } from '../types/cipther';
 
 export interface State {
   input: string;
   output: string;
   faShift: number;
   shift: number;
+  affine: AffineType;
 }
 
 const initialState = {
@@ -14,9 +16,17 @@ const initialState = {
   output: '',
   faShift: 0,
   shift: 0,
+  affine: {
+    a: 1,
+    b: 0,
+  },
 };
 
 type Action =
+  | {
+      type: 'SET_ALL_DATA';
+      data: Omit<State, 'output'>;
+    }
   | {
       type: 'SET_INPUT';
       input: string;
@@ -34,12 +44,21 @@ type Action =
   | {
       type: 'SET_SHIFT';
       shift: number;
+    }
+  | {
+      type: 'SET_AFFINE';
+      affine: AffineType;
     };
 
 export const GlobalContext = createContext<State | any>(initialState);
 
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
+    case 'SET_ALL_DATA':
+      return {
+        ...state,
+        ...action.data,
+      };
     case 'SET_INPUT':
       return {
         ...state,
@@ -65,11 +84,25 @@ const reducer = (state: State, action: Action) => {
         ...state,
         shift: action.shift,
       };
+    case 'SET_AFFINE':
+      return {
+        ...state,
+        affine: action.affine,
+      };
   }
 };
 
 const GlobalProvider: React.FC = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const setData = useCallback(
+    (data: State) =>
+      dispatch({
+        type: 'SET_ALL_DATA',
+        data,
+      }),
+    [dispatch]
+  );
 
   const setInput = useCallback(
     (input: string) =>
@@ -114,14 +147,25 @@ const GlobalProvider: React.FC = (props) => {
     [dispatch]
   );
 
+  const setAffine = useCallback(
+    (affine: { a: number; b: number }) =>
+      dispatch({
+        type: 'SET_AFFINE',
+        affine,
+      }),
+    [dispatch]
+  );
+
   const value = useMemo(
     () => ({
       ...state,
+      setData,
       setInput,
       setOutput,
       setFaShiftLeft,
       setFaShiftRight,
       setShift,
+      setAffine,
     }),
     [state]
   );

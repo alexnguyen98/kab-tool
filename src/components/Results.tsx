@@ -20,7 +20,7 @@ const Results: React.FC = () => {
         <Text variant="small" className="p-3">
           Output
         </Text>
-        <TextArea disabled className="flex-1 px-3 bg-white cursor-not-allowed" value={output} onChange={handleOutput} />
+        <TextArea disabled className="flex-1 px-3 bg-white cursor-not-allowed" value={output?.toLowerCase()} onChange={handleOutput} />
       </div>
       <div className="flex-1 flex flex-col border-t-2">
         <Text variant="small" className="p-3">
