@@ -24,7 +24,6 @@ const Afinne: React.FC = () => {
           const decryptedIndex = (aInverse * (index - affine.b)) % LETTER_LENGTH;
           res = res.replaceAll(i, abcdArr[decryptedIndex]?.toUpperCase());
         });
-        console.log(res);
         solution = res;
       } catch (err) {
         solution = '"A" neni prvocislo s 26!';
