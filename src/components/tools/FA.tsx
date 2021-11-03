@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { abcdArr, letterFrequencyArr, LETTER_LENGTH } from '../../constants/vocabulary';
 import Button from '../common/Button';
-import { useGlobalContext } from '../context/ManagedContext';
+import { useGlobalContext } from '../../context/ManagedContext';
 import ArrowLeft from '../icons/ArrowLeft';
 
 // const data: { [key: string]: number } = {
@@ -14,8 +14,7 @@ import ArrowLeft from '../icons/ArrowLeft';
 type Data = { [key: string]: number };
 
 const FA: React.FC = () => {
-  const { input } = useGlobalContext();
-  const [shift, setShift] = useState(0);
+  const { input, faShift, setFaShiftLeft, setFaShiftRight } = useGlobalContext();
 
   const generateDataStats = (): Data => {
     if (!input.trim().length) return {};
@@ -44,10 +43,10 @@ const FA: React.FC = () => {
     const data = generateDataStats();
     let processData = abcdArr.map((i) => (data[i] ? data[i] : 0));
 
-    if (shift) {
+    if (faShift) {
       processData = processData
-        .slice(LETTER_LENGTH - (shift % processData.length))
-        .concat(processData.slice(0, LETTER_LENGTH - (shift % processData.length)));
+        .slice(LETTER_LENGTH - (faShift % processData.length))
+        .concat(processData.slice(0, LETTER_LENGTH - (faShift % processData.length)));
     }
 
     return abcdArr.map((i, index) => ({
@@ -58,11 +57,11 @@ const FA: React.FC = () => {
   };
 
   const handleLeft = () => {
-    setShift((state) => (state === 0 ? LETTER_LENGTH - 1 : state - 1));
+    setFaShiftLeft();
   };
 
   const handleRight = () => {
-    setShift((state) => (state === LETTER_LENGTH - 1 ? 0 : state + 1));
+    setFaShiftRight();
   };
 
   useEffect(() => {
@@ -75,7 +74,7 @@ const FA: React.FC = () => {
       }
     };
     document.addEventListener('keyup', handleKey);
-    return () => document.removeEventListener('keyup', handleKey, true);
+    return () => document.removeEventListener('keyup', handleKey);
   }, []);
 
   return (
@@ -84,7 +83,7 @@ const FA: React.FC = () => {
         <Button onClick={handleLeft} className="w-16 flex">
           <ArrowLeft className="w-6 m-auto text-accent-5 fill-current" />
         </Button>
-        <span className="w-20 text-center">Posun: {shift}</span>
+        <span className="w-20 text-center">Posun: {faShift}</span>
         <Button onClick={handleRight} className="w-16 flex">
           <ArrowLeft className="w-6 m-auto transform rotate-180 text-accent-5 fill-current" />
         </Button>

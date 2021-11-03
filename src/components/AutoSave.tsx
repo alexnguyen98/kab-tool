@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDebounce } from '../hooks/useDebounce';
-import { useGlobalContext } from './context/ManagedContext';
+import { useGlobalContext } from '../context/ManagedContext';
 
 const AutoSave: React.FC = () => {
   const { input, setInput } = useGlobalContext();

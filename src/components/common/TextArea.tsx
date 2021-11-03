@@ -8,8 +8,6 @@ type Props = {
   onChange?: (e: any) => void;
 };
 
-const TextArea: React.FC<Props> = ({ className, disabled, value, onChange }) => (
-  <textarea className={cn('w-full', className)} disabled={disabled} value={value} onChange={onChange} />
-);
+const TextArea: React.FC<Props> = ({ className, ...props }) => <textarea className={cn('w-full', className)} {...props} />;
 
 export default TextArea;

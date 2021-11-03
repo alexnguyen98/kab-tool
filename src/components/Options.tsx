@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { cipherArr, CIPTHER_TYPES } from '../constants/ciphers';
 import Affine from './tools/Affine';
 import FA from './tools/FA';
+import Shift from './tools/Shift';
 
 const Options: React.FC = () => {
   const [activeType, setActiveType] = useState<CIPTHER_TYPES>(CIPTHER_TYPES.FA);
@@ -18,6 +19,8 @@ const Options: React.FC = () => {
     switch (activeType) {
       case CIPTHER_TYPES.FA:
         return <FA />;
+      case CIPTHER_TYPES.SHIFT:
+        return <Shift />;
       case CIPTHER_TYPES.AFFINE:
         return <Affine />;
       default:
