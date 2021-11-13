@@ -1,7 +1,7 @@
 import React, { useReducer, useMemo, useCallback, useContext, createContext } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { LETTER_LENGTH } from '../constants/vocabulary';
-import { AffineType } from '../types/cipther';
+import { AffineType, SubstType } from '../types/cipther';
 
 export interface State {
   input: string;
@@ -9,6 +9,7 @@ export interface State {
   faShift: number;
   shift: number;
   affine: AffineType;
+  subst: SubstType;
 }
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
     a: 1,
     b: 0,
   },
+  subst: {},
 };
 
 type Action =
@@ -48,6 +50,10 @@ type Action =
   | {
       type: 'SET_AFFINE';
       affine: AffineType;
+    }
+  | {
+      type: 'SET_SUBST';
+      subst: SubstType;
     };
 
 export const GlobalContext = createContext<State | any>(initialState);
@@ -88,6 +94,11 @@ const reducer = (state: State, action: Action) => {
       return {
         ...state,
         affine: action.affine,
+      };
+    case 'SET_SUBST':
+      return {
+        ...state,
+        subst: action.subst,
       };
   }
 };
@@ -148,10 +159,19 @@ const GlobalProvider: React.FC = (props) => {
   );
 
   const setAffine = useCallback(
-    (affine: { a: number; b: number }) =>
+    (affine: AffineType) =>
       dispatch({
         type: 'SET_AFFINE',
         affine,
+      }),
+    [dispatch]
+  );
+
+  const setSubst = useCallback(
+    (subst: SubstType) =>
+      dispatch({
+        type: 'SET_SUBST',
+        subst,
       }),
     [dispatch]
   );
@@ -166,6 +186,7 @@ const GlobalProvider: React.FC = (props) => {
       setFaShiftRight,
       setShift,
       setAffine,
+      setSubst,
     }),
     [state]
   );

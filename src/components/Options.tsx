@@ -4,6 +4,7 @@ import { cipherArr, CIPTHER_TYPES } from '../constants/ciphers';
 import Afinne from './tools/Afinne';
 import FA from './tools/FA';
 import Shift from './tools/Shift';
+import Substitution from './tools/Substitution';
 
 const Options: React.FC = () => {
   const [activeType, setActiveType] = useState<CIPTHER_TYPES>(CIPTHER_TYPES.FA);
@@ -23,6 +24,8 @@ const Options: React.FC = () => {
         return <Shift />;
       case CIPTHER_TYPES.AFFINE:
         return <Afinne />;
+      case CIPTHER_TYPES.SUBSITUTION:
+        return <Substitution />;
       default:
         return null;
     }
