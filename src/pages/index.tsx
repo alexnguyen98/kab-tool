@@ -7,7 +7,7 @@ import Results from '../components/Results';
 const Home: React.FC = () => {
   return (
     <Layout>
-      <div className="flex-1 flex border-2">
+      <div className="flex-1 flex border-2 border-accent-2">
         <AutoSave />
         <Results />
         <Options />

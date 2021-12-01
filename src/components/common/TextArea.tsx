@@ -8,6 +8,6 @@ type Props = {
   onChange?: (e: any) => void;
 };
 
-const TextArea: React.FC<Props> = ({ className, ...props }) => <textarea className={cn('w-full', className)} {...props} />;
+const TextArea: React.FC<Props> = ({ className, ...props }) => <textarea className={cn('w-full bg-accent-1', className)} {...props} />;
 
 export default TextArea;

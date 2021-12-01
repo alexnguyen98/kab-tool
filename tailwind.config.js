@@ -15,6 +15,10 @@ module.exports = {
   },
   theme: {
     extend: {
+      minWidth: {
+        72: '18rem',
+        '6xl': '1000px',
+      },
       maxWidth: {
         '8xl': '1920px',
         500: '500px',
@@ -69,9 +73,6 @@ module.exports = {
       },
       flex: {
         2: '2 2 0%',
-      },
-      minWidth: {
-        72: '18rem',
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],

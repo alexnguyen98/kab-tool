@@ -40,7 +40,7 @@ const Substitution: React.FC = () => {
               name={i}
               value={subst[i] || ''}
               onChange={handleInput}
-              className="bg-white shadow rounded-md border-2 w-10 px-2 py-1 text-center"
+              className="bg-accent-0 shadow rounded-md border-2 border-accent-2 w-10 px-2 py-1 text-center"
               maxLength={1}
             />
           </li>

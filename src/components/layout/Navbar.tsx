@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../icons/Logo';
 import Github from '../icons/Github';
+import ThemeToggle from '../ThemeToggle';
 
 const Navbar: React.FC = () => {
   return (
@@ -11,6 +12,9 @@ const Navbar: React.FC = () => {
           KAB tool
         </div>
         <ul className="ml-auto text-sm text-accent-3 flex items-center space-x-5">
+          <li>
+            <ThemeToggle />
+          </li>
           <li>
             <a href="https://github.com/alexnguyen98/kab-tool" className="flex items-center">
               <Github className="w-4 mr-1 fill-current" />

@@ -14,7 +14,7 @@ const Button: React.FC<Props> = ({ className = '', variant = 'default', children
     <button
       className={cn(
         {
-          ['bg-white shadow rounded-md border-2']: variant === 'default',
+          ['bg-accent-0 shadow rounded-md border-2 border-accent-2']: variant === 'default',
         },
         className
       )}

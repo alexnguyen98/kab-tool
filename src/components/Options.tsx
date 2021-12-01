@@ -33,13 +33,13 @@ const Options: React.FC = () => {
 
   return (
     <aside className="flex-2 flex flex-col">
-      <ul className="border-b-2 flex flex-nowrap spa">
+      <ul className="border-b-2 border-accent-2 flex flex-nowrap spa">
         {cipherArr.map((i) => (
           <li key={i} className="my-2 mx-1">
             <button
               onClick={() => handleType(i)}
               className={cn(
-                'text-sm text-blue-900 bg-blue-100 hover:bg-blue-200 hover:border-blue-200 border-blue-100 border-2 capitalize pl-4 pr-2 py-1 rounded-full',
+                'text-sm text-blue-900 bg-blue-100 hover:bg-blue-200 hover:border-blue-200 border-blue-100 border-2 capitalize px-3 py-1 rounded-full',
                 {
                   'border-blue-900 border-2': activeType === i,
                 }

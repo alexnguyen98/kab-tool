@@ -15,15 +15,15 @@ const Results: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col border-r-2">
+    <div className="flex-1 flex flex-col border-r-2 border-accent-2">
       <div className="flex-1 flex flex-col">
-        <Text variant="small" className="p-3">
+        <Text variant="small" className="p-3 bg-accent-1">
           Output
         </Text>
         <TextArea disabled className="flex-1 px-3 bg-white cursor-not-allowed" value={output?.toLowerCase()} onChange={handleOutput} />
       </div>
-      <div className="flex-1 flex flex-col border-t-2">
-        <Text variant="small" className="p-3">
+      <div className="flex-1 flex flex-col border-t-2 border-accent-2">
+        <Text variant="small" className="p-3 bg-accent-1">
           Input
         </Text>
         <TextArea className="flex-1 px-3 focus:outline-none" value={input} onChange={handleInput} />

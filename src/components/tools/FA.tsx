@@ -79,7 +79,7 @@ const FA: React.FC = () => {
 
   return (
     <div className="flex-1 flex flex-col">
-      <div className="border-b-2 flex justify-center items-center space-x-5 py-2">
+      <div className="border-b-2 border-accent-2 flex justify-center items-center space-x-5 py-2">
         <Button onClick={handleLeft} className="w-16 flex">
           <ArrowLeft className="w-6 m-auto text-accent-5 fill-current" />
         </Button>
@@ -94,7 +94,7 @@ const FA: React.FC = () => {
             <CartesianGrid stroke="#eeeeee" horizontal={false} />
             <XAxis dataKey="letter" axisLine={{ stroke: '#eeeeee', strokeWidth: 2 }} />
             <YAxis hide />
-            <Line dataKey="percent1" stroke="#e2e7f7" dot={false} strokeWidth={4} isAnimationActive={false} />
+            <Line dataKey="percent1" stroke="text-white" dot={false} strokeWidth={4} isAnimationActive={false} />
             <Line dataKey="percent2" stroke="#718ce6" dot={false} strokeWidth={4} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>
