@@ -46,9 +46,9 @@ const Options: React.FC = () => {
               )}
             >
               {i}
-              <span onClick={() => handleHelp(i)} className="text-xs font-bold bg-blue-300 text-black px-2 rounded-full ml-1">
+              {/* <span onClick={() => handleHelp(i)} className="text-xs font-bold bg-blue-300 text-black px-2 rounded-full ml-1">
                 ?
-              </span>
+              </span> */}
             </button>
           </li>
         ))}

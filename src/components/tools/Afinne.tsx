@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { abcdArr, LETTER_LENGTH } from '../../constants/vocabulary';
 import { useGlobalContext } from '../../context/ManagedContext';
 import { AffineType } from '../../types/cipther';
@@ -21,8 +21,8 @@ const Afinne: React.FC = () => {
         let res = input;
         const aInverse = getMultiplicativeInverse(affine.a);
         abcdArr.forEach((i, index) => {
-          const decryptedIndex = (aInverse * (index - affine.b)) % LETTER_LENGTH;
-          res = res.replaceAll(i, abcdArr[decryptedIndex]?.toUpperCase());
+          const decryptedIndex = ((aInverse * (index - affine.b)) % LETTER_LENGTH) + LETTER_LENGTH;
+          res = res.replaceAll(i, abcdArr[decryptedIndex % LETTER_LENGTH]?.toUpperCase());
         });
         solution = res;
       } catch (err) {
@@ -32,6 +32,10 @@ const Afinne: React.FC = () => {
     setAffine(affine);
     setOutput(solution);
   };
+
+  useEffect(() => {
+    handleAffine(affine);
+  }, [input]);
 
   return (
     <div>
