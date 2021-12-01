@@ -94,7 +94,7 @@ const FA: React.FC = () => {
             <CartesianGrid stroke="#eeeeee" horizontal={false} />
             <XAxis dataKey="letter" axisLine={{ stroke: '#eeeeee', strokeWidth: 2 }} />
             <YAxis hide />
-            <Line dataKey="percent1" stroke="text-white" dot={false} strokeWidth={4} isAnimationActive={false} />
+            <Line dataKey="percent1" stroke="#e2e7f7" dot={false} strokeWidth={4} isAnimationActive={false} />
             <Line dataKey="percent2" stroke="#718ce6" dot={false} strokeWidth={4} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>
