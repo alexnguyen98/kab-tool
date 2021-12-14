@@ -1,5 +1,5 @@
 import React from 'react';
-import AutoSave from '../components/AutoSave';
+import AutoSave from '../components/utils/AutoSave';
 import Layout from '../components/containers/Layout';
 import Options from '../components/Options';
 import Results from '../components/Results';

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useTheme } from 'next-themes';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { abcdArr, letterFrequencyArr, LETTER_LENGTH } from '../../constants/vocabulary';
 import Button from '../common/Button';
@@ -15,25 +16,26 @@ type Data = { [key: string]: number };
 
 const FA: React.FC = () => {
   const { input, faShift, setFaShiftLeft, setFaShiftRight } = useGlobalContext();
+  const { theme } = useTheme();
+  const isLightMode = theme === 'light';
 
   const generateDataStats = (): Data => {
-    if (!input.trim().length) return {};
+    const withoutWhiteSpace = input.replace(/\s/g, '');
+
+    if (!withoutWhiteSpace.length) return {};
 
     const freq: Data = {};
 
-    input
-      .trim()
-      .split('')
-      .forEach((i: string) => {
-        const letter = i.toLowerCase();
-        if (freq[letter]) {
-          freq[letter]++;
-        } else {
-          freq[letter] = 1;
-        }
-      });
+    withoutWhiteSpace.split('').forEach((i: string) => {
+      const letter = i.toLowerCase();
+      if (freq[letter]) {
+        freq[letter]++;
+      } else {
+        freq[letter] = 1;
+      }
+    });
     Object.keys(freq).forEach((i) => {
-      freq[i] = freq[i] / input.trim().length;
+      freq[i] = freq[i] / withoutWhiteSpace.length;
     });
 
     return freq;
@@ -91,7 +93,7 @@ const FA: React.FC = () => {
       <div className="flex-1">
         <ResponsiveContainer>
           <LineChart data={generateData()} margin={{ right: 20, left: 20, bottom: 10 }}>
-            <CartesianGrid stroke="#eeeeee" horizontal={false} />
+            <CartesianGrid stroke={isLightMode ? '#eeeeee' : '#444444'} horizontal={false} />
             <XAxis dataKey="letter" axisLine={{ stroke: '#eeeeee', strokeWidth: 2 }} />
             <YAxis hide />
             <Line dataKey="percent1" stroke="#e2e7f7" dot={false} strokeWidth={4} isAnimationActive={false} />

@@ -1,7 +1,7 @@
 import { useTheme } from 'next-themes';
 import React from 'react';
-import DarkMode from './icons/DarkMode';
-import LightMode from './icons/LightMode';
+import DarkMode from '../icons/DarkMode';
+import LightMode from '../icons/LightMode';
 
 const ThemeToggle: React.FC = () => {
   const { theme, setTheme } = useTheme();

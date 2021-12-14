@@ -6,6 +6,7 @@ import { AffineType, SubstType } from '../types/cipther';
 export interface State {
   input: string;
   output: string;
+  ic: number;
   faShift: number;
   shift: number;
   affine: AffineType;
@@ -15,6 +16,7 @@ export interface State {
 const initialState = {
   input: '',
   output: '',
+  ic: 0,
   faShift: 0,
   shift: 0,
   affine: {
@@ -36,6 +38,10 @@ type Action =
   | {
       type: 'SET_OUTPUT';
       output: string;
+    }
+  | {
+      type: 'SET_IC';
+      ic: number;
     }
   | {
       type: 'SET_FA_SHIFT_LEFT';
@@ -74,6 +80,11 @@ const reducer = (state: State, action: Action) => {
       return {
         ...state,
         output: action.output,
+      };
+    case 'SET_IC':
+      return {
+        ...state,
+        ic: action.ic,
       };
     case 'SET_FA_SHIFT_LEFT':
       return {
@@ -133,6 +144,15 @@ const GlobalProvider: React.FC = (props) => {
     [dispatch]
   );
 
+  const setIC = useCallback(
+    (ic: number) =>
+      dispatch({
+        type: 'SET_IC',
+        ic,
+      }),
+    [dispatch]
+  );
+
   const setFaShiftLeft = useCallback(
     () =>
       dispatch({
@@ -182,6 +202,7 @@ const GlobalProvider: React.FC = (props) => {
       setData,
       setInput,
       setOutput,
+      setIC,
       setFaShiftLeft,
       setFaShiftRight,
       setShift,

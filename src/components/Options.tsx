@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { cipherArr, CIPTHER_TYPES } from '../constants/ciphers';
 import Afinne from './tools/Afinne';
 import FA from './tools/FA';
+import IC from './tools/IC';
 import Shift from './tools/Shift';
 import Substitution from './tools/Substitution';
 
@@ -34,6 +35,7 @@ const Options: React.FC = () => {
   return (
     <aside className="flex-2 flex flex-col">
       <ul className="border-b-2 border-accent-2 flex flex-nowrap spa">
+        <IC />
         {cipherArr.map((i) => (
           <li key={i} className="my-2 mx-1">
             <button

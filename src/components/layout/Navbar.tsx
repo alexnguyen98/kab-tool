@@ -1,7 +1,11 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Logo from '../icons/Logo';
 import Github from '../icons/Github';
-import ThemeToggle from '../ThemeToggle';
+
+const ThemeToggle = dynamic(() => import('../utils/ThemeToggle'), {
+  ssr: false,
+});
 
 const Navbar: React.FC = () => {
   return (
