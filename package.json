@@ -2,6 +2,12 @@
   "name": "kab-tool",
   "version": "1.0.0",
   "license": "MIT",
+  "keywords": [
+    "KAB",
+    "CVUT",
+    "cryptography",
+    "tool"
+  ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development NODE_OPTIONS='--inspect' next dev",
     "debug": "cross-env NODE_OPTIONS='--inspect' next",
