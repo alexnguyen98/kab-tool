@@ -8,6 +8,7 @@ const IC: React.FC = () => {
   const { input, ic, setIC } = useGlobalContext();
   const debouncedInput = useDebounce(input.replace(/\s/g, ''), 1000);
 
+  // Calculate Index of coincidence on input change
   useEffect(() => {
     if (!debouncedInput.length) return;
 

@@ -1,5 +1,6 @@
 export const LETTER_LENGTH = 26;
 
+// English dictionary letter frequency
 export const letterFrequency: { [key: string]: number } = {
   a: 0.08,
   b: 0.01,

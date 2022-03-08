@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+// Debounce for frequent func calls with delay
 export const useDebounce = (value: any, delay: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 

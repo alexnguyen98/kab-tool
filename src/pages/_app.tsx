@@ -10,6 +10,7 @@ import { ManagedContext } from '../context/ManagedContext';
 const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
+  // Analytics router handling
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       handlePageView(url);

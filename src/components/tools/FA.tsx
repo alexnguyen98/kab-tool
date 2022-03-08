@@ -6,12 +6,6 @@ import Button from '../common/Button';
 import { useGlobalContext } from '../../context/ManagedContext';
 import ArrowLeft from '../icons/ArrowLeft';
 
-// const data: { [key: string]: number } = {
-//   a: 0.02,
-//   b: 0.05,
-//   c: 0.03,
-// };
-
 type Data = { [key: string]: number };
 
 const FA: React.FC = () => {
@@ -19,6 +13,7 @@ const FA: React.FC = () => {
   const { theme } = useTheme();
   const isLightMode = theme === 'light';
 
+  // Generating letter frequency object of input
   const generateDataStats = (): Data => {
     const withoutWhiteSpace = input.replace(/\s/g, '');
 
@@ -41,10 +36,12 @@ const FA: React.FC = () => {
     return freq;
   };
 
+  // Generating letter frequency data of english alphabet and input for graph
   const generateData = () => {
     const data = generateDataStats();
     let processData = abcdArr.map((i) => (data[i] ? data[i] : 0));
 
+    // Change indexes of letters on shift
     if (faShift) {
       processData = processData
         .slice(LETTER_LENGTH - (faShift % processData.length))

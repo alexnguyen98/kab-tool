@@ -4,6 +4,7 @@ import { useGlobalContext } from '../../context/ManagedContext';
 
 const AutoSave: React.FC = () => {
   const { setData, output, input, ic, faShift, shift, affine, subst } = useGlobalContext();
+  // Debounce global state
   const debouncedInput = useDebounce(JSON.stringify({ output, input, ic, faShift, shift, affine, subst }), 1000);
 
   useEffect(() => {
@@ -16,6 +17,7 @@ const AutoSave: React.FC = () => {
     loadData();
   }, []);
 
+  // Save global state in local storage
   useEffect(() => {
     if (!input.trim().length) return;
     const data = JSON.stringify({

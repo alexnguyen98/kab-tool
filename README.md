@@ -1,6 +1,7 @@
 # Kab tool
 
-A cryptography tool for the subject KAB on CVUT.
+A cryptography tool for the subject KAB on CVUT. Includes basic cryptography techniques monoalphabetic shift, affine cipher, substition with keyword.
+</br>
 Not mobile responsive, Desktop only!
 
 Demo live at: [kab-tool.vercel.app](https://kab-tool.vercel.app/)
@@ -9,6 +10,8 @@ Demo live at: [kab-tool.vercel.app](https://kab-tool.vercel.app/)
 
 - Autosave of state
 - Keypress for frequency analysis (arrow left and right)
+- Calculate Index of coincidence (IC) on input
+- Autochange output on cipher paramater change
 - Dark/Light mode
 
 ## Getting Started

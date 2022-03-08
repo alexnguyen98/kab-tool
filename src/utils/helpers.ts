@@ -1,5 +1,6 @@
 import { LETTER_LENGTH } from '../constants/vocabulary';
 
+// Inverse index of alphabet letter
 export const getMultiplicativeInverse = (a: number) => {
   let flag = 0;
   for (let i = 0; i < LETTER_LENGTH; i++) {

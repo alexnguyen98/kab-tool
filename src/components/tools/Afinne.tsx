@@ -11,6 +11,7 @@ const Afinne: React.FC = () => {
   const handleA = (e: any) => handleAffine({ ...affine, a: parseInt(e.target.value) });
   const handleB = (e: any) => handleAffine({ ...affine, b: parseInt(e.target.value) });
 
+  // Affine parameters calculation
   const handleAffine = (affine: AffineType) => {
     if (!input?.length) return;
     let solution;
