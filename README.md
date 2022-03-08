@@ -2,6 +2,7 @@
 
 A cryptography tool for the subject KAB on CVUT. Includes basic cryptography techniques monoalphabetic shift, affine cipher, substition with keyword.
 </br>
+</br>
 Not mobile responsive, Desktop only!
 
 Demo live at: [kab-tool.vercel.app](https://kab-tool.vercel.app/)
