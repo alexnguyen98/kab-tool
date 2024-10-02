@@ -1,9 +1,10 @@
-import React from 'react';
-import cn from 'classnames';
+import cn from "classnames";
+import React, { ReactNode } from "react";
 
 type Props = {
   className?: string;
   id?: string;
+  children: ReactNode;
 };
 
 const Section: React.FC<Props> = ({ className, children, id }) => (

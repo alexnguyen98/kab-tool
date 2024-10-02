@@ -1,26 +1,37 @@
-import React, { JSXElementConstructor } from 'react';
-import cn from 'classnames';
+import cn from "classnames";
+import React, { JSXElementConstructor, ReactNode } from "react";
 
-type Variant = 'heading' | 'sectionHeading' | 'body' | 'small';
+type Variant = "heading" | "sectionHeading" | "body" | "small";
 
 type Props = {
   variant?: Variant;
+  children: ReactNode;
   className?: string;
   html?: string;
   onClick?: () => any;
 };
 
-const Text: React.FC<Props> = ({ className = '', variant = 'body', children, html, onClick }) => {
+const Text: React.FC<Props> = ({
+  className = "",
+  variant = "body",
+  children,
+  html,
+  onClick,
+}) => {
   const componentsMap: {
     [P in Variant]: React.ComponentType<any> | string;
   } = {
-    body: 'p',
-    small: 'p',
-    heading: 'h1',
-    sectionHeading: 'h2',
+    body: "p",
+    small: "p",
+    heading: "h1",
+    sectionHeading: "h2",
   };
 
-  const Component: JSXElementConstructor<any> | React.ReactElement<any> | React.ComponentType<any> | string = componentsMap![variant!];
+  const Component:
+    | JSXElementConstructor<any>
+    | React.ReactElement<any>
+    | React.ComponentType<any>
+    | string = componentsMap![variant!];
 
   const htmlContentProps = html
     ? {
@@ -32,10 +43,12 @@ const Text: React.FC<Props> = ({ className = '', variant = 'body', children, htm
     <Component
       className={cn(
         {
-          ['text-accent-4 font-bold text-sm']: variant === 'small',
-          ['text-xl md:text-2xl']: variant === 'body',
-          ['text-4xl md:text-5xl font-bold pb-6 md:pb-8']: variant === 'sectionHeading',
-          ['text-5xl md:text-7xl font-bold pb-6 md:pb-8']: variant === 'heading',
+          ["text-accent-4 font-bold text-sm"]: variant === "small",
+          ["text-xl md:text-2xl"]: variant === "body",
+          ["text-4xl md:text-5xl font-bold pb-6 md:pb-8"]:
+            variant === "sectionHeading",
+          ["text-5xl md:text-7xl font-bold pb-6 md:pb-8"]:
+            variant === "heading",
         },
         className
       )}

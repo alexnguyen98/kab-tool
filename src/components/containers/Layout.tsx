@@ -1,7 +1,9 @@
-import React from 'react';
-import Navbar from '../layout/Navbar';
+import React, { ReactNode } from "react";
+import Navbar from "../layout/Navbar";
 
-const Layout: React.FC = ({ children }) => {
+const Layout: React.FC<{
+  children: ReactNode;
+}> = ({ children }) => {
   return (
     <>
       <div className="hidden md:flex flex-col min-h-screen min-w-6xl h-full leading-normal overflow-x-hidden">

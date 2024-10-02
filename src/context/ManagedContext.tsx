@@ -1,7 +1,14 @@
-import React, { useReducer, useMemo, useCallback, useContext, createContext } from 'react';
-import { ThemeProvider } from 'next-themes';
-import { LETTER_LENGTH } from '../constants/vocabulary';
-import { AffineType, SubstType } from '../types/cipther';
+import { ThemeProvider } from "next-themes";
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useMemo,
+  useReducer,
+} from "react";
+import { LETTER_LENGTH } from "../constants/vocabulary";
+import { AffineType, SubstType } from "../types/cipther";
 
 export interface State {
   input: string;
@@ -14,8 +21,8 @@ export interface State {
 }
 
 const initialState = {
-  input: '',
-  output: '',
+  input: "",
+  output: "",
   ic: 0,
   faShift: 0,
   shift: 0,
@@ -28,37 +35,37 @@ const initialState = {
 
 type Action =
   | {
-      type: 'SET_ALL_DATA';
-      data: Omit<State, 'output'>;
+      type: "SET_ALL_DATA";
+      data: Omit<State, "output">;
     }
   | {
-      type: 'SET_INPUT';
+      type: "SET_INPUT";
       input: string;
     }
   | {
-      type: 'SET_OUTPUT';
+      type: "SET_OUTPUT";
       output: string;
     }
   | {
-      type: 'SET_IC';
+      type: "SET_IC";
       ic: number;
     }
   | {
-      type: 'SET_FA_SHIFT_LEFT';
+      type: "SET_FA_SHIFT_LEFT";
     }
   | {
-      type: 'SET_FA_SHIFT_RIGHT';
+      type: "SET_FA_SHIFT_RIGHT";
     }
   | {
-      type: 'SET_SHIFT';
+      type: "SET_SHIFT";
       shift: number;
     }
   | {
-      type: 'SET_AFFINE';
+      type: "SET_AFFINE";
       affine: AffineType;
     }
   | {
-      type: 'SET_SUBST';
+      type: "SET_SUBST";
       subst: SubstType;
     };
 
@@ -66,47 +73,47 @@ export const GlobalContext = createContext<State | any>(initialState);
 
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
-    case 'SET_ALL_DATA':
+    case "SET_ALL_DATA":
       return {
         ...state,
         ...action.data,
       };
-    case 'SET_INPUT':
+    case "SET_INPUT":
       return {
         ...state,
         input: action.input,
       };
-    case 'SET_OUTPUT':
+    case "SET_OUTPUT":
       return {
         ...state,
         output: action.output,
       };
-    case 'SET_IC':
+    case "SET_IC":
       return {
         ...state,
         ic: action.ic,
       };
-    case 'SET_FA_SHIFT_LEFT':
+    case "SET_FA_SHIFT_LEFT":
       return {
         ...state,
         faShift: state.faShift === 0 ? LETTER_LENGTH - 1 : state.faShift - 1,
       };
-    case 'SET_FA_SHIFT_RIGHT':
+    case "SET_FA_SHIFT_RIGHT":
       return {
         ...state,
         faShift: state.faShift === LETTER_LENGTH - 1 ? 0 : state.faShift + 1,
       };
-    case 'SET_SHIFT':
+    case "SET_SHIFT":
       return {
         ...state,
         shift: action.shift,
       };
-    case 'SET_AFFINE':
+    case "SET_AFFINE":
       return {
         ...state,
         affine: action.affine,
       };
-    case 'SET_SUBST':
+    case "SET_SUBST":
       return {
         ...state,
         subst: action.subst,
@@ -114,13 +121,15 @@ const reducer = (state: State, action: Action) => {
   }
 };
 
-const GlobalProvider: React.FC = (props) => {
+const GlobalProvider: React.FC<{
+  children: ReactNode;
+}> = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const setData = useCallback(
     (data: State) =>
       dispatch({
-        type: 'SET_ALL_DATA',
+        type: "SET_ALL_DATA",
         data,
       }),
     [dispatch]
@@ -129,7 +138,7 @@ const GlobalProvider: React.FC = (props) => {
   const setInput = useCallback(
     (input: string) =>
       dispatch({
-        type: 'SET_INPUT',
+        type: "SET_INPUT",
         input,
       }),
     [dispatch]
@@ -138,7 +147,7 @@ const GlobalProvider: React.FC = (props) => {
   const setOutput = useCallback(
     (output: string) =>
       dispatch({
-        type: 'SET_OUTPUT',
+        type: "SET_OUTPUT",
         output,
       }),
     [dispatch]
@@ -147,7 +156,7 @@ const GlobalProvider: React.FC = (props) => {
   const setIC = useCallback(
     (ic: number) =>
       dispatch({
-        type: 'SET_IC',
+        type: "SET_IC",
         ic,
       }),
     [dispatch]
@@ -156,7 +165,7 @@ const GlobalProvider: React.FC = (props) => {
   const setFaShiftLeft = useCallback(
     () =>
       dispatch({
-        type: 'SET_FA_SHIFT_LEFT',
+        type: "SET_FA_SHIFT_LEFT",
       }),
     [dispatch]
   );
@@ -164,7 +173,7 @@ const GlobalProvider: React.FC = (props) => {
   const setFaShiftRight = useCallback(
     () =>
       dispatch({
-        type: 'SET_FA_SHIFT_RIGHT',
+        type: "SET_FA_SHIFT_RIGHT",
       }),
     [dispatch]
   );
@@ -172,7 +181,7 @@ const GlobalProvider: React.FC = (props) => {
   const setShift = useCallback(
     (shift: number) =>
       dispatch({
-        type: 'SET_SHIFT',
+        type: "SET_SHIFT",
         shift,
       }),
     [dispatch]
@@ -181,7 +190,7 @@ const GlobalProvider: React.FC = (props) => {
   const setAffine = useCallback(
     (affine: AffineType) =>
       dispatch({
-        type: 'SET_AFFINE',
+        type: "SET_AFFINE",
         affine,
       }),
     [dispatch]
@@ -190,7 +199,7 @@ const GlobalProvider: React.FC = (props) => {
   const setSubst = useCallback(
     (subst: SubstType) =>
       dispatch({
-        type: 'SET_SUBST',
+        type: "SET_SUBST",
         subst,
       }),
     [dispatch]
@@ -223,7 +232,9 @@ export const useGlobalContext = () => {
   return context;
 };
 
-export const ManagedContext: React.FC = ({ children }) => {
+export const ManagedContext: React.FC<{
+  children: ReactNode;
+}> = ({ children }) => {
   return (
     <GlobalProvider>
       <ThemeProvider defaultTheme="light">{children}</ThemeProvider>

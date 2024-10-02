@@ -1,5 +1,5 @@
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
-import { GA_TRACKING_ID } from '../utils/ga';
+import NextDocument, { Head, Html, Main, NextScript } from "next/document";
+import { GA_TRACKING_ID } from "../utils/ga";
 
 class Document extends NextDocument {
   render() {
@@ -8,17 +8,13 @@ class Document extends NextDocument {
         <Head>
           {/* --Google font-- */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="true"
-          />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
             rel="stylesheet"
           />
           {/* --Google analytics-- */}
-          {process.env.NODE_ENV !== 'development' && (
+          {process.env.NODE_ENV !== "development" && (
             <>
               <script
                 async
