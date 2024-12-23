@@ -32,7 +32,7 @@ const Results: React.FC = () => {
         </Text>
         <TextArea
           disabled
-          className="flex-1 px-3 bg-white cursor-not-allowed"
+          className="flex-1 px-3 cursor-not-allowed"
           value={output?.toLowerCase()}
           onChange={handleOutput}
         />
